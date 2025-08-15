@@ -8,8 +8,8 @@
 <style>
     body {
         margin: 0;
-        background: white;
         font-family: Arial, sans-serif;
+        background: #b8b5b5;
         color: #080808;
         display: flex;
         flex-direction: column;
@@ -17,28 +17,85 @@
         padding: 20px;
     }
 
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+        gap: 20px;
+    }
+
+    .frame {
+        border-radius: 20px;
+        padding: 25px;
+        box-sizing: border-box;
+        background: linear-gradient(145deg, #d9d6d6, #bfbcbc);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .frame:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    }
+
     h1 {
-        color: blue;
-        font-size: 28px;
-        margin: 10px 0 5px;
+        color: #004080; /* azul forte para destaque */
+        font-size: 30px;
+        margin: 0 0 10px;
         text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
 
     h1 span {
-        color: red;
+        color: #c60000; /* vermelho industrial */
     }
 
     p {
-        text-align: center;
-        margin: 5px 0;
         font-size: 20px;
+        margin: 0 0 15px;
+        text-align: center;
     }
 
-    .img-banner {
-        width: 300px;
-        height: auto;
-        border-radius: 10px;
-        margin: 20px 0;
+    .maquinas {
+        border: 3px solid #1ec8a5;
+        border-radius: 20px;
+        padding: 25px;
+        box-sizing: border-box;
+        font-size: 40px;
+        background: linear-gradient(145deg, #cbcbdb, #b0afc0);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .maquinas:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .img-banner,
+    .img-frame {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-container video {
+        width: 100%;
         display: block;
     }
 
@@ -47,97 +104,68 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.7);
         color: white;
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        font-size: 28px;
-        border: none;
+        font-size: 32px;
+        border: 3px solid #1ec8a5;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: transform 0.3s, background 0.3s;
+        z-index: 2;
+        transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .btn-play:hover {
         transform: translate(-50%, -50%) scale(1.2);
-        background: rgba(0,0,0,0.8);
-    }
-
-    .video-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
-        opacity: 0;
-        transition: opacity 0.5s;
-    }
-
-    .video-overlay.show {
-        display: flex;
-        opacity: 1;
-    }
-
-    .video-overlay video {
-        width: 90%;
-        max-width: 600px;
-        border-radius: 10px;
-    }
-
-    .cta {
-        background: #1ec8a5;
-        color: #000;
-        padding: 12px 20px;
-        border-radius: 25px;
-        font-weight: bold;
-        margin-top: 15px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .whats {
-        margin-top: 10px;
-        font-size: 16px;
+        background: rgba(0,0,0,0.85);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 </style>
 </head>
 
 <body>
 
-<h1>OFICINA DE <span>COMPRESSORES</span></h1>
-<p>Manutenção • Conserto • Instalação</p>
+<div class="container">
 
-<div style="position: relative; display: inline-block;">
-    <img src="Imagem do WhatsApp de 2025-07-01 à(s) 16.57.37_1d658a0d.jpg" alt="Banner" class="img-banner">
-    <button class="btn-play" id="btnPlay">▶</button>
-</div>
+    <!-- Quadro superior: Banner e texto -->
+    <div class="frame">
+        <h1>OFICINA DE <span>COMPRESSORES</span></h1>
+        <p>Manutenção • Conserto • Instalação</p>
+        <img src="Imagem do WhatsApp de 2025-07-01 à(s) 16.57.37_1d658a0d.jpg" alt="Banner" class="img-banner">
+    </div>
 
-<div class="video-overlay" id="videoOverlay">
-    <video controls>
-        <source src="WhatsApp Video 2024-09-22 at 12.23.11.mp4" type="video/mp4">
-    </video>
+    <div>
+        <p class="maquinas">Maquinas á Vender</p>
+    </div>
+
+    <!-- Quadro inferior: vídeo com botão de play sobreposto -->
+    <div class="frame">
+        <div class="video-container">
+            <video id="video" controls>
+                <source src="WhatsApp Video 2024-09-22 at 12.23.11.mp4" type="video/mp4">
+            </video>
+            <button class="btn-play" id="btnPlay">▶</button>
+        </div>
+    </div>
+
 </div>
 
 <script>
     const btn = document.getElementById('btnPlay');
-    const overlay = document.getElementById('videoOverlay');
+    const video = document.getElementById('video');
 
     btn.addEventListener('click', () => {
-        overlay.classList.add('show'); // fade-in
+        video.play();
+        btn.style.display = 'none';
     });
 
-    overlay.addEventListener('click', (e) => {
-        if (e.target.tagName !== 'VIDEO') {
-            overlay.classList.remove('show'); // fade-out
-        }
+    video.addEventListener('ended', () => {
+        btn.style.display = 'flex';
     });
 </script>
 
